@@ -218,15 +218,15 @@ export default class MentionSuggestions extends Component {
     if (!mention) {
       return;
     }
-
+    const updated_mention;
     if (this.props.onAddMention) {
-      this.props.onAddMention(mention);
+      updated_mention = this.props.onAddMention(mention);
     }
 
     this.closeDropdown();
     const newEditorState = addMention(
       this.props.store.getEditorState(),
-      mention,
+      updated_mention || mention,
       this.props.mentionPrefix,
       this.props.mentionTrigger,
       this.props.entityMutability,
